@@ -15,9 +15,14 @@ lint:
 
 deploy:
 	#push to ECR for deploy
-	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 561744971673.dkr.ecr.us-east-1.amazonaws.com
+	# aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 561744971673.dkr.ecr.us-east-1.amazonaws.com
+	# docker build -t mlops .
+	# docker tag mlops:latest 561744971673.dkr.ecr.us-east-1.amazonaws.com/mlops:latest
+	# docker push 561744971673.dkr.ecr.us-east-1.amazonaws.com/mlops:latest
+	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 516003265142.dkr.ecr.us-east-1.amazonaws.com
 	docker build -t mlops .
-	docker tag mlops:latest 561744971673.dkr.ecr.us-east-1.amazonaws.com/mlops:latest
-	docker push 561744971673.dkr.ecr.us-east-1.amazonaws.com/mlops:latest
+	docker tag mlops:latest 516003265142.dkr.ecr.us-east-1.amazonaws.com/python-mlops-cookbook:latest
+	docker push 516003265142.dkr.ecr.us-east-1.amazonaws.com/python-mlops-cookbook:latest
+	
 	
 all: install lint test format deploy

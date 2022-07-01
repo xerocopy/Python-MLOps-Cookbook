@@ -13,6 +13,7 @@ def test_array():
     feature = val.reshape(-1, 1)
     return feature
 
+
 @pytest.fixture
 def app():
     yield flask_app
@@ -51,7 +52,7 @@ def test_retrain():
 
 # Smoke test Flask
 def test_index(app, client):
-    res = client.get('/')
+    res = client.get("/")
     assert res.status_code == 200
     expected = "Predict the Height From Weight of MLB Players"
     assert expected in res.get_data(as_text=True)
